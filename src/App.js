@@ -11,8 +11,12 @@ const pageContent = [
   },
 ];
 
+const blog = [];
+
 function App() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [inputValue, setInputValue] = useState();
+  const [posts, setPosts] = useState(blog);
 
   function Page1(props) {
     return (
@@ -46,7 +50,7 @@ function App() {
             width="100%"
             height="300"
             scrolling="no"
-            frameborder="no"
+            frameBorder="no"
             allow="autoplay"
             src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/875323093&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
           />
@@ -98,10 +102,54 @@ function App() {
       </div>
     );
   }
+
+  function handlePosts({ header, content }) {
+    return setPosts([...posts, { header, content, id: uid() }]);
+  }
+
   function Page4(props) {
     return (
       <div>
-        <p>this is the fouth page</p>
+        <h1>add new content</h1>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            handlePosts(data);
+
+            console.log(data);
+          }}
+          type="input"
+          name="form"
+        >
+          <label htmlFor="header">Headline</label>
+          <input
+            // This is called a controlled input.
+            // value={inputValue}
+            // onChange={(event) => {
+            //   setInputValue(event.target.value);
+            // }}
+            type="text"
+            name="header"
+            id="header"
+          />
+          <label htmlFor="content">Content</label>
+          <textarea type="text" name="content" id="content" />
+          <button name="post" type="submit">
+            post
+          </button>
+        </form>
+        <ul>
+          {posts.map((blog) => {
+            return (
+              <li key={blog.id}>
+                <h2>{blog.header}</h2>
+                <p>{blog.content}</p>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }
@@ -112,10 +160,18 @@ function App() {
 
   return (
     <div>
-      <button onClick={() => handlePageChange(1)}>Go to page 1</button>
-      <button onClick={() => handlePageChange(2)}>Go to page 2</button>
-      <button onClick={() => handlePageChange(3)}>Go to page 3</button>
-      <button onClick={() => handlePageChange(4)}>Go to page 4</button>
+      <button name="page1" type="button" onClick={() => handlePageChange(1)}>
+        Go to page 1
+      </button>
+      <button name="page2" type="button" onClick={() => handlePageChange(2)}>
+        Go to page 2
+      </button>
+      <button name="page3" type="button" onClick={() => handlePageChange(3)}>
+        Go to page 3
+      </button>
+      <button name="page4" type="button" onClick={() => handlePageChange(4)}>
+        Go to page 4
+      </button>
       {currentPage === 1 ? (
         <Page1 />
       ) : currentPage === 2 ? (
