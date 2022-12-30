@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Page1 from "../Pages/Page1";
 import Page2 from "../Pages/Page2";
 import Page3 from "../Pages/Page3";
@@ -7,13 +7,10 @@ import { Page4 } from "../Pages/Page4";
 
 const StyledNav = styled.nav``;
 const StyledButton = styled.button`
-  gap: 10px;
-
   width: 25%;
   color: black;
   background: lightgrey;
   border: none;
-
   transition: background 0.5s, color 0.5s;
   &:hover {
     color: white;
@@ -32,6 +29,7 @@ export default function Navigation() {
       <StyledButton
         name="page1"
         type="button"
+        variant="page1"
         onClick={() => handlePageChange(1)}
       >
         Go to page 1
@@ -39,6 +37,7 @@ export default function Navigation() {
       <StyledButton
         name="page2"
         type="button"
+        variant="page2"
         onClick={() => handlePageChange(2)}
       >
         Go to page 2

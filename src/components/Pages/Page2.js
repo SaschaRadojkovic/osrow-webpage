@@ -1,6 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
 import { deletePost, fetchPage } from "../../api";
 import Header from "../Header/Header";
+import styled from "styled-components";
+import { StyledH3 } from "./Page1";
 
 export default function Page2() {
   const [pages, setPages] = useState(null);
