@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 
 import { useEffect, useState } from "react";
 import { deletePost, fetchPage } from "../../api";
+import Header from "../Header/Header";
 
 export default function Page3() {
   const [pages, setPages] = useState(null);

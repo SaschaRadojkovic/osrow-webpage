@@ -1,5 +1,15 @@
 import { Fragment, useEffect, useState } from "react";
-import { deletePost, fetchAllPages, fetchPage } from "../../api";
+import styled from "styled-components";
+import { deletePost, fetchPage } from "../../api";
+
+const StyledFieldset = styled.fieldset`
+  display: grid;
+`;
+const StyledH3 = styled.h3`
+  border: 1px solid black;
+
+  padding-left: 130px;
+`;
 
 export default function Page1() {
   const [pages, setPages] = useState(null);
@@ -10,11 +20,11 @@ export default function Page1() {
     });
   }, []);
   return (
-    <div>
+    <StyledFieldset>
       {pages &&
         pages.map((page) => (
           <Fragment key={page._id}>
-            <h3>{page.header}</h3>
+            <StyledH3>{page.header}</StyledH3>
             <p>{page.content}</p>
             <button
               style={{
@@ -43,6 +53,6 @@ export default function Page1() {
             </button>
           </Fragment>
         ))}
-    </div>
+    </StyledFieldset>
   );
 }
