@@ -1,6 +1,56 @@
-import React from "react";
+import React, { Fragment } from "react";
 
-export default function Page3(props) {
+import { useEffect, useState } from "react";
+import { deletePost, fetchPage } from "../../api";
+
+export default function Page3() {
+  const [pages, setPages] = useState(null);
+
+  useEffect(() => {
+    fetchPage(3).then((data) => {
+      console.log("data", data);
+      setPages(data);
+    });
+  }, []);
+  return (
+    <div>
+      {pages &&
+        pages.map((page) => (
+          <Fragment key={page._id}>
+            <h3>{page.header}</h3>
+            <p>{page.content}</p>
+            <button
+              style={{
+                padding: "2px",
+                paddingLeft: "5px",
+                paddingRight: "5px",
+
+                border: "1px solid black",
+                borderRadius: "50%",
+                color: "white",
+                backgroundColor: "black",
+                width: "20px",
+                height: "20px",
+                ":hover": {
+                  backgroundColor: "red",
+                },
+              }}
+              onClick={async () => {
+                await deletePost(page._id);
+                fetchPage(3).then((data) => {
+                  setPages(data);
+                });
+              }}
+            >
+              X
+            </button>
+          </Fragment>
+        ))}
+    </div>
+  );
+}
+
+export function PageSoundCloud(props) {
   return (
     <div>
       <React.Fragment>
@@ -53,7 +103,7 @@ export default function Page3(props) {
           title="icon"
           allowtransparency="true"
           scrolling="no"
-          frameborder="no"
+          frameBorder="no"
           src="https://w.soundcloud.com/icon/?url=http%3A%2F%2Fsoundcloud.com%2Fosrow_music&color=black_white&size=48"
           style={{ width: 48, height: 48 }}
         ></iframe>
