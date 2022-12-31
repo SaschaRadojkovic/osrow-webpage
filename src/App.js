@@ -7,7 +7,8 @@ import styled from "styled-components";
 import Footer from "./components/Footer/Footer";
 
 const StyledBody = styled.body`
-  background: grey;
+  background-color: grey;
+  width: 100%;
   height: 100%;
 `;
 
