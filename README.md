@@ -2,7 +2,7 @@
 
 Welcome to the Posting-Webpage , a multi-page web application that allows users to post and delete content on different pages. The app has three pages: Page 1, Page 2, and Page 3. Each page has a form that allows users to post content, which will be displayed on that page.
 
-Additionally, the app has a special form page that is only visible and functional for the owner of the app. On this page, the owner can select which page they want to post content to, and their content will be displayed on the selected page. The owner can also delete any content that they have posted on any of the pages.
+Additionally, the app has a special form page that in future will be only visible and functional for the owner or user logged in . On this page, the owner can select which page they want to post content to, and their content will be displayed on the selected page. The owner can also delete any content that they have posted on any of the pages.
 
 # Future plans
 
