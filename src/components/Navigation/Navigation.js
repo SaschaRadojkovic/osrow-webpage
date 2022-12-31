@@ -1,3 +1,4 @@
+import { style } from "@mui/system";
 import { useState } from "react";
 import styled from "styled-components";
 import Page1 from "../Pages/Page1";
@@ -12,7 +13,7 @@ const StyledButton = styled.button`
   height: 30px;
   width: 25%;
   color: black;
-  background: lightgrey;
+  background: ${(props) => (props.active ? "grey" : "lightgrey")};
   border: none;
   transition: background 0.5s, color 0.5s;
   &:hover {
@@ -33,6 +34,7 @@ export default function Navigation() {
         name="page1"
         type="button"
         variant="page1"
+        active={currentPage === 1}
         onClick={() => handlePageChange(1)}
       >
         Go to page 1
@@ -41,6 +43,7 @@ export default function Navigation() {
         name="page2"
         type="button"
         variant="page2"
+        active={currentPage === 2}
         onClick={() => handlePageChange(2)}
       >
         Go to page 2
@@ -48,6 +51,7 @@ export default function Navigation() {
       <StyledButton
         name="page3"
         type="button"
+        active={currentPage === 3}
         onClick={() => handlePageChange(3)}
       >
         Go to page 3
@@ -55,6 +59,7 @@ export default function Navigation() {
       <StyledButton
         name="page4"
         type="button"
+        active={currentPage === 4}
         onClick={() => handlePageChange(4)}
       >
         Go to page 4
