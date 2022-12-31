@@ -4,13 +4,7 @@ import { useEffect, useState } from "react";
 import { deletePost, fetchPage } from "../../api";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
-import {
-  StyledDeleteButton,
-  StyledDiv,
-  StyledH3,
-  StyledP,
-  StyledSection,
-} from "./Page1";
+import { StyledDiv, StyledH3, StyledP, StyledSection } from "./Page1";
 
 export default function Page3() {
   const [pages, setPages] = useState(null);
@@ -29,6 +23,7 @@ export default function Page3() {
             <StyledH3>{page.header}</StyledH3>
             <StyledP>{page.content}</StyledP>
             <DeleteForeverIcon
+              style={{ position: "absolute", top: 18, right: 10 }}
               onClick={async () => {
                 await deletePost(page._id);
                 fetchPage(3).then((data) => {

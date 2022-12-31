@@ -10,6 +10,8 @@ export const StyledDiv = styled.div`
 `;
 
 export const StyledSection = styled.section`
+  z-index: 0;
+  position: relative;
   padding-left: 40px;
   padding-right: 40px;
 
@@ -70,6 +72,7 @@ export default function Page1() {
             <StyledH3>{page.header}</StyledH3>
             <StyledP>{page.content}</StyledP>
             <DeleteForeverIcon
+              style={{ position: "absolute", top: 18, right: 10 }}
               onClick={async () => {
                 await deletePost(page._id);
                 fetchPage(1).then((data) => {

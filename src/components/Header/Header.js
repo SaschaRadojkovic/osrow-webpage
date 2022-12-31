@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
 const StyledH1 = styled.h1`
+  z-index: 2;
+  position: fixed;
   margin: 0;
+  top: 0;
+  left: 0;
+  right: 0;
 
   text-align: center;
   padding-top: 20px;

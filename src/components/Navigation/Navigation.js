@@ -1,4 +1,3 @@
-import { style } from "@mui/system";
 import { useState } from "react";
 import styled from "styled-components";
 import Page1 from "../Pages/Page1";
@@ -6,8 +5,17 @@ import Page2 from "../Pages/Page2";
 import Page3 from "../Pages/Page3";
 import { Page4 } from "../Pages/Page4";
 
+// const StyledContainer = styled.div`
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   overflow: auto;
+// `;
+
 const StyledNav = styled.nav`
-  margin: 0;
+  padding-top: 77px;
 `;
 const StyledButton = styled.button`
   height: 30px;
@@ -37,7 +45,7 @@ export default function Navigation() {
         active={currentPage === 1}
         onClick={() => handlePageChange(1)}
       >
-        Go to page 1
+        {currentPage !== 1 ? "Go to page 1" : " you are on page 1"}
       </StyledButton>
       <StyledButton
         name="page2"
@@ -46,7 +54,7 @@ export default function Navigation() {
         active={currentPage === 2}
         onClick={() => handlePageChange(2)}
       >
-        Go to page 2
+        {currentPage !== 2 ? "Go to page 2" : " you are on page 2"}
       </StyledButton>
       <StyledButton
         name="page3"
@@ -54,7 +62,7 @@ export default function Navigation() {
         active={currentPage === 3}
         onClick={() => handlePageChange(3)}
       >
-        Go to page 3
+        {currentPage !== 3 ? "Go to page 3" : " you are on page 3"}
       </StyledButton>
       <StyledButton
         name="page4"
@@ -62,7 +70,7 @@ export default function Navigation() {
         active={currentPage === 4}
         onClick={() => handlePageChange(4)}
       >
-        Go to page 4
+        {currentPage !== 4 ? "Go to page 4" : " you are on page 4"}
       </StyledButton>
       {currentPage === 1 && <Page1 />}
       {currentPage === 2 && <Page2 />}
