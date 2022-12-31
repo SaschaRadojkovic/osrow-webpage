@@ -1,8 +1,14 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { deletePost, fetchPage } from "../../api";
-import Header from "../Header/Header";
-import styled from "styled-components";
-import { StyledH3 } from "./Page1";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+
+import {
+  StyledDeleteButton,
+  StyledDiv,
+  StyledH3,
+  StyledP,
+  StyledSection,
+} from "./Page1";
 
 export default function Page2() {
   const [pages, setPages] = useState(null);
@@ -13,28 +19,14 @@ export default function Page2() {
     });
   }, []);
   return (
-    <div>
+    <StyledDiv>
       {pages &&
         pages.map((page) => (
-          <Fragment key={page._id}>
-            <h3>{page.header}</h3>
-            <p>{page.content}</p>
-            <button
-              style={{
-                padding: "2px",
-                paddingLeft: "5px",
-                paddingRight: "5px",
+          <StyledSection key={page._id}>
+            <StyledH3>{page.header}</StyledH3>
 
-                border: "1px solid black",
-                borderRadius: "50%",
-                color: "white",
-                backgroundColor: "black",
-                width: "20px",
-                height: "20px",
-                ":hover": {
-                  backgroundColor: "red",
-                },
-              }}
+            <StyledP>{page.content}</StyledP>
+            <DeleteForeverIcon
               onClick={async () => {
                 await deletePost(page._id);
                 fetchPage(2).then((data) => {
@@ -43,9 +35,9 @@ export default function Page2() {
               }}
             >
               X
-            </button>
-          </Fragment>
+            </DeleteForeverIcon>
+          </StyledSection>
         ))}
-    </div>
+    </StyledDiv>
   );
 }

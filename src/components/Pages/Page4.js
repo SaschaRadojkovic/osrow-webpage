@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { postPage } from "../../api";
 import styled from "styled-components";
-import Header from "../Header/Header";
+import { StyledDiv, StyledH3, StyledSection } from "./Page1";
 
-const StyledFieldset = styled.fieldset``;
+const StyledFieldset = styled.fieldset`
+  margin: 50px;
+`;
 const StyledForm = styled.form`
   padding: 10px;
   background: beige;
@@ -15,6 +17,11 @@ const StyledUl = styled.ul`
   list-style: none;
   justify-content: space-around;
 `;
+
+const StyledH2 = styled.h2`
+  text-align: center;
+`;
+
 export function Page4(props) {
   const [selectedPage, setSelectedPage] = useState(null);
   async function handlePosts(page) {
@@ -25,61 +32,63 @@ export function Page4(props) {
     console.log("result", result);
   }
   return (
-    <div>
-      <h2>add new content</h2>
-      <h3>choose where to post</h3>
-      <StyledUl>
-        <li>
-          <input
-            name="page"
-            type="checkbox"
-            checked={selectedPage === 1}
-            onChange={() => setSelectedPage(1)}
-          />
-          page one
-        </li>
-        <li>
-          <input
-            name="page"
-            type="checkbox"
-            checked={selectedPage === 2}
-            onChange={() => setSelectedPage(2)}
-          />
-          page two
-        </li>
-        <li>
-          <input
-            name="page"
-            type="checkbox"
-            checked={selectedPage === 3}
-            onChange={() => setSelectedPage(3)}
-          />
-          page three
-        </li>
-      </StyledUl>
-      <StyledFieldset>
-        <StyledForm
-          onSubmit={(event) => {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            handlePosts(data);
+    <StyledDiv>
+      <StyledSection>
+        <StyledH2>Add New Content</StyledH2>
+        <StyledH3>choose where to post</StyledH3>
+        <StyledUl>
+          <li>
+            <input
+              name="page"
+              type="checkbox"
+              checked={selectedPage === 1}
+              onChange={() => setSelectedPage(1)}
+            />
+            page one
+          </li>
+          <li>
+            <input
+              name="page"
+              type="checkbox"
+              checked={selectedPage === 2}
+              onChange={() => setSelectedPage(2)}
+            />
+            page two
+          </li>
+          <li>
+            <input
+              name="page"
+              type="checkbox"
+              checked={selectedPage === 3}
+              onChange={() => setSelectedPage(3)}
+            />
+            page three
+          </li>
+        </StyledUl>
+        <StyledFieldset>
+          <StyledForm
+            onSubmit={(event) => {
+              event.preventDefault();
+              const formData = new FormData(event.target);
+              const data = Object.fromEntries(formData);
+              handlePosts(data);
 
-            console.log(data);
-          }}
-          type="input"
-          name="form"
-        >
-          <label htmlFor="header">Headline</label>
-          <input type="text" name="header" id="header" />
+              console.log(data);
+            }}
+            type="input"
+            name="form"
+          >
+            <label htmlFor="header">Headline</label>
+            <input type="text" name="header" id="header" />
 
-          <label htmlFor="content">Content</label>
-          <textarea type="text" name="content" id="content" />
-          <button name="post" type="submit">
-            post
-          </button>
-        </StyledForm>
-      </StyledFieldset>
-    </div>
+            <label htmlFor="content">Content</label>
+            <textarea type="text" name="content" id="content" />
+            <button name="post" type="submit">
+              post
+            </button>
+          </StyledForm>
+        </StyledFieldset>
+      </StyledSection>
+    </StyledDiv>
   );
 }

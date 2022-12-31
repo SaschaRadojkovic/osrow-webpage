@@ -1,12 +1,15 @@
 import { useState } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Page1 from "../Pages/Page1";
 import Page2 from "../Pages/Page2";
 import Page3 from "../Pages/Page3";
 import { Page4 } from "../Pages/Page4";
 
-const StyledNav = styled.nav``;
+const StyledNav = styled.nav`
+  margin: 0;
+`;
 const StyledButton = styled.button`
+  height: 30px;
   width: 25%;
   color: black;
   background: lightgrey;

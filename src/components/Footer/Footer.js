@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const StyledH1 = styled.h1`
-  margin: 0;
+const StyledFooter = styled.footer`
+  margin-bottom: 0;
 
   text-align: center;
   padding-top: 20px;
@@ -9,6 +9,6 @@ const StyledH1 = styled.h1`
   background: black;
   color: white;
 `;
-export default function Header() {
-  return <StyledH1>PAGE HEADER</StyledH1>;
+export default function Footer() {
+  return <StyledFooter>PAGE FOOTER</StyledFooter>;
 }
